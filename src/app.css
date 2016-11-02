@@ -1,0 +1,31 @@
+/* Set margins on lists */
+.md-body-1 {
+  margin: 8px 8px 8px 0px;
+}
+
+/* Highlight focused publication */
+md-list-item.focused {
+  background-color: #D0D0D0
+}
+p.focused {
+  font-weight: bold;
+}
+
+/* Change width of Side navs */
+md-sidenav,
+md-sidenav.md-locked-open-add-active,
+md-sidenav.md-closed.md-locked-open-add-active,
+md-sidenav.md-locked-open {
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
+}
+
+/* Add margin to progrss bar */
+#progress-indicador {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 50px;
+}

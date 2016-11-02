@@ -1,0 +1,50 @@
+<!-- Application toolbar -->
+<md-toolbar layout="row">
+  <div class="md-toolbar-tools" flex layout="row">
+    <h1>Buscador FUTUR UPC</h1>
+    <span flex></span>
+    <md-button class="md-raised" ng-click="app.addToSelection()">Add</md-button>
+    <md-button class="md-raised" ng-click="app.exportResult()">Export</md-button>
+  </div>
+</md-toolbar>
+
+<!-- Main content -->
+<div flex layout="row">
+
+  <!-- Input list -->
+  <md-sidenav class="md-whiteframe-4dp" md-is-locked-open="true" md-component-id="left">
+    <md-content layout="column">
+      <md-list>
+        <md-list-item ng-repeat="(idx, pub) in app.publications | orderBy:'title' track by pub.id" ng-click="app.searchPublication(pub)" ng-class="pub.id === app.focused.id ? 'focused' : ''">
+          <div layout="row">
+            <p class="md-body-1" ng-class="pub.id === app.focused.id ? 'focused' : ''">[{{ idx + 1 }}]</p>
+            <p class="md-body-1" ng-class="pub.id === app.focused.id ? 'focused' : ''">{{ pub.title }}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+
+  <!-- Search preview -->
+  <md-content id="content" flex layout="column">
+    <div id="progress-indicador" layout="row" layout-align="space-around" ng-show="app.isLoading">
+      <md-progress-circular md-mode="indeterminate" md-diameter="70"></md-progress-circular>
+    </div>
+    <webview id="web-display" flex src="http://futur.upc.edu/" style="width:100%; height:100%"></webview>
+  </md-content>
+
+  <!-- Output list -->
+  <md-sidenav class="md-whiteframe-4dp" md-is-locked-open="true" md-component-id="right">
+    <md-content layout="column">
+      <md-list>
+        <md-list-item ng-repeat="(idx, pub) in app.selection track by pub.id">
+          <div layout="row">
+            <p class="md-body-1">[{{ idx + 1 }}]</p>
+            <p class="md-body-1">{{ pub.reference }}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+
+</div>
