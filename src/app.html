@@ -15,7 +15,7 @@
   <md-sidenav class="md-whiteframe-4dp" md-is-locked-open="true" md-component-id="left">
     <md-content layout="column">
       <md-list>
-        <md-list-item ng-repeat="(idx, pub) in app.publications | orderBy:'title' track by pub.id" ng-click="app.searchPublication(pub)" ng-class="pub.id === app.focused.id ? 'focused' : ''">
+        <md-list-item ng-repeat="(idx, pub) in app.publications | orderBy: '-publishDate' track by pub.id" ng-click="app.searchPublication(pub)" ng-class="pub.id === app.focused.id ? 'focused' : ''">
           <div layout="row">
             <p class="md-body-1" ng-class="pub.id === app.focused.id ? 'focused' : ''">[{{ idx + 1 }}]</p>
             <p class="md-body-1" ng-class="pub.id === app.focused.id ? 'focused' : ''">{{ pub.title }}</p>
